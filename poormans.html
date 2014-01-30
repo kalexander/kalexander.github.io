@@ -29,9 +29,6 @@ box-shadow: 10px 10px 5px #888888;
 <body>
 
 <div class="outer">
-     <div id="box1" class="blip"> 
-         this has some content
-     </div>
 </div>
 <script>
 var colorz = ["aqua", "black", "blue", "fuchsia", "gray", "green", "lime", "maroon", "navy", "olive", "orange", "purple", "red", "silver", "teal", "white", "yellow"]
@@ -72,14 +69,13 @@ function getRandomInt(lower, upper){
 function plop(){
     var id = 'id_' + getRandomInt(1,303030);
     
-    
+    // ajax call to some local aggregator in lieu of hardcoded poop..
     var app = '<div id="' + id+ '" class="blip1">' + quotez[getRandomInt(0,quotez.length -1)] + '</div>';
     $(".outer").append( app );
     window.twttr.widgets.load();
     $("#" + id).css({
         "right":"-300px",
         "top": getRandomInt(1,400)
-        //"background-color": colorz[getRandomInt(0,colorz.length-1)]
     })
     var amt = $(window).width() + $("#" + id).outerWidth()
     $("#" + id).animate({right: "+=" + amt + ""}, getRandomInt(5,10) * 1700, "linear", function(){this.remove()})
@@ -91,10 +87,6 @@ function doThis(){
 }
 
 $(document).ready(function(){
-    alert($("#box1").outerWidth())
-    $("#box1").css("right","-300px")
-    var amt = $(window).width() + $("#box1").outerWidth()
-    $("#box1").animate({right: "+=" + amt + ""}, 10000)
     doThis()
 })
 </script>
