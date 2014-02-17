@@ -1,0 +1,137 @@
+<html>
+<head>
+<style>
+.outer {
+   overflow: hidden;
+   position: relative;
+    height:900px;
+    width:100%;
+    background-image:url('http://blueshift7.com/files/images/background/light_green_paint_background-other.jpg');
+    
+}
+.blip{
+    position: absolute;
+width:300px;
+height:100px;
+background-color:yellow;
+    opacity:0.80;
+box-shadow: 10px 10px 5px #888888;
+}
+.blip1{
+    position: absolute;
+    opacity:0.85;
+    width:250px;
+}
+</style>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+<script src="/javascripts/jquery.gsap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//platform.twitter.com/widgets.js"></script>
+</head>
+<body>
+
+<div class="outer">
+</div>
+<script>
+var colorz = ["aqua", "black", "blue", "fuchsia", "gray", "green", "lime", "maroon", "navy", "olive", "orange", "purple", "red", "silver", "teal", "white", "yellow"]
+
+var quotez = [
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p><a href="https://twitter.com/search?q=%23KXANInvestigates&amp;src=hash">#KXANInvestigates</a> at 6 you won&#39;t want to miss <a href="https://twitter.com/RMaxwellKXAN">@RMaxwellKXAN</a>&#39;s <a href="https://twitter.com/search?q=%23EMS&amp;src=hash">#EMS</a> investigation in Austin - things are critical <a href="http://t.co/41UcMpP1cZ">http://t.co/41UcMpP1cZ</a></p>&mdash; KXAN News (@KXAN_News) <a href="https://twitter.com/KXAN_News/statuses/428920539798052865">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>When coffee maker at home breaks, go in for oil change, free coffee bonus <a href="https://twitter.com/McDavidAcuraAus">@McDavidAcuraAus</a> <a href="https://twitter.com/search?q=%23cheapskates&amp;src=hash">#cheapskates</a> <a href="https://twitter.com/search?q=%23Austin&amp;src=hash">#Austin</a> <a href="http://t.co/xPA7Yu5Lve">pic.twitter.com/xPA7Yu5Lve</a></p>&mdash; Malita Jones (@512homestore) <a href="https://twitter.com/512homestore/statuses/429278828049866753">January 31, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" lang="en"><p>Sipping on madcap from htooth &amp; sitting in traffic while listening to the writer&#39;s almanac - bringing back some good old memories <a href="https://twitter.com/search?q=%23austin&amp;src=hash">#austin</a></p>&mdash; Ariel Min (@ariellamin) <a href="https://twitter.com/ariellamin/statuses/429271096961941504">January 31, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" lang="en"><p>Really, there are no college kids in <a href="https://twitter.com/search?q=%23austin&amp;src=hash">#austin</a> who want a paid internship at <a href="https://twitter.com/5by5">@5by5</a>? C’mon people.</p>&mdash; Dan Benjamin (@danbenjamin) <a href="https://twitter.com/danbenjamin/statuses/429268223151063040">January 31, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/rsvpster">@rsvpster</a> You&#39;re doing great in <a href="https://twitter.com/search?q=%23austin&amp;src=hash">#austin</a> on the leaderboard: <a href="http://t.co/JAafIN0iXs">http://t.co/JAafIN0iXs</a> Congrats. We rank the top Tweets every day in <a href="https://twitter.com/search?q=%23austin&amp;src=hash">#austin</a>.</p>&mdash; AustinHashOff (@AustinHashOff) <a href="https://twitter.com/AustinHashOff/statuses/429267636191391745">January 31, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/PetRelocation">@petrelocation</a> is a pretty cool place for an <a href="https://twitter.com/search?q=%23Austin&amp;src=hash">#Austin</a> <a href="https://twitter.com/search?q=%23internship&amp;src=hash">#internship</a>, especially for Imogene, whose pet… <a href="http://t.co/4SfdyRXPsf">http://t.co/4SfdyRXPsf</a></p>&mdash; Rachel Truair (@RachelTruair) <a href="https://twitter.com/RachelTruair/statuses/429267189867499521">January 31, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>.<a href="https://twitter.com/Spredfast">@spredfast</a> Kickoff. Team is as strong as you will find. Culture is even stronger. <a href="https://twitter.com/search?q=%23austin&amp;src=hash">#austin</a> <a href="http://t.co/Bqjwjz4NTZ">pic.twitter.com/Bqjwjz4NTZ</a></p>&mdash; Doug Pepper (@dougpepper) <a href="https://twitter.com/dougpepper/statuses/429264831242182656">January 31, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" lang="en"><p>I wake up every morning to a view of the gorgeous downtown skyline...and the crowing of roosters. Only in <a href="https://twitter.com/search?q=%23Austin&amp;src=hash">#Austin</a>.</p>&mdash; Melissa Lombard (@MelissaKLombard) <a href="https://twitter.com/MelissaKLombard/statuses/429249347381784577">January 31, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" lang="en"><p>If I had a candy-red-paint, you already know. The funkiest of them all, Mr. <a href="https://twitter.com/DaMFunK">@DaMFunK</a>. <a href="https://twitter.com/search?q=%23austin&amp;src=hash">#austin</a> @ Red 7 <a href="http://t.co/OEcv4TnJi6">http://t.co/OEcv4TnJi6</a></p>&mdash; Emily Moller (@em_oller) <a href="https://twitter.com/em_oller/statuses/429161641339805696">January 31, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" lang="en"><p>The ladies taking <a href="https://twitter.com/search?q=%23Austin&amp;src=hash">#Austin</a>&#39;s music scene by storm: <a href="https://twitter.com/danafalconberry">@danafalconberry</a> <a href="https://twitter.com/EmilyWolfeMusic">@EmilyWolfeMusic</a> <a href="https://twitter.com/jessswilliamson">@jessswilliamson</a>. <a href="http://t.co/ySqrW3tH8y">http://t.co/ySqrW3tH8y</a> <a href="https://twitter.com/CultureMapATX">@CultureMapATX</a></p>&mdash; ACL Festival (@aclfestival) <a href="https://twitter.com/aclfestival/statuses/428921981149265920">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" lang="en"><p>Summer internship applications are open! Go, go, go. <a href="http://t.co/h4qtZbj5T0">http://t.co/h4qtZbj5T0</a> <a href="https://twitter.com/search?q=%23Austin&amp;src=hash">#Austin</a> <a href="https://twitter.com/search?q=%23gsdm&amp;src=hash">#gsdm</a></p>&mdash; GSD&amp;M (@GSDM) <a href="https://twitter.com/GSDM/statuses/428563324666535936">January 29, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" lang="en"><p>Free <a href="https://twitter.com/search?q=%23Yoga&amp;src=hash">#Yoga</a> in <a href="https://twitter.com/search?q=%23Austin&amp;src=hash">#Austin</a> every day of the week. <a href="http://t.co/ChABdU9uhL">http://t.co/ChABdU9uhL</a> a roundup article of the best via <a href="https://twitter.com/theAustinot">@theAustinot</a></p>&mdash; keepaustinwierd (@KeepAustinWierd) <a href="https://twitter.com/KeepAustinWierd/statuses/428534315790512129">January 29, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" lang="en"><p>Happy Friday! Here&#39;s a list of some really cool <a href="https://twitter.com/search?q=%23Austin&amp;src=hash">#Austin</a> Happy Hours <a href="http://t.co/NeLuJBYGWy">http://t.co/NeLuJBYGWy</a> via <a href="https://twitter.com/theAustinot">@theAustinot</a></p>&mdash; Austin TX Followers (@ATXFollowers) <a href="https://twitter.com/ATXFollowers/statuses/426820585172111360">January 24, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" lang="en"><p>Started my morning off by spotting a large, bearded man knitting at a coffee shop. I think it&#39;s going to be a good day in <a href="https://twitter.com/search?q=%23Austin&amp;src=hash">#Austin</a>.</p>&mdash; Lauren Modery (@Hipstercrite) <a href="https://twitter.com/Hipstercrite/statuses/426373773437054976">January 23, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>New <a href="https://twitter.com/search?q=%23tattoo&amp;src=hash">#tattoo</a> from Roger at Resurection Tattoo in <a href="https://twitter.com/search?q=%23Austin&amp;src=hash">#Austin</a>. CT <a href="http://t.co/34OQOAq8x0">pic.twitter.com/34OQOAq8x0</a></p>&mdash; EliYoungBand (@EliYoungBand) <a href="https://twitter.com/EliYoungBand/statuses/426194077927751680">January 23, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>.<a href="https://twitter.com/AustinMahone">@AustinMahone</a> Talks Meeting His Celebrity Crush <a href="https://twitter.com/rihanna">@Rihanna</a>. Find out what he said to her: <a href="http://t.co/6Re1rZknGC">http://t.co/6Re1rZknGC</a></p>&mdash; Republic Records (@RepublicRecords) <a href="https://twitter.com/RepublicRecords/statuses/428915596580098048">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Allergies in Austin: is there a cure? | <a href="http://t.co/fXWgeieJkv">http://t.co/fXWgeieJkv</a> | Articles <a href="http://t.co/b8kS9t5DDW">http://t.co/b8kS9t5DDW</a></p>&mdash; Austin.com (@Austin) <a href="https://twitter.com/Austin/statuses/428876661304872962">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Win race day VIP treatment with Rob Austin &amp; Exocet Racing&#10;&#10;• Rob Austin to clean the winner’s car personally!... <a href="http://t.co/Vdz7xuqhel">http://t.co/Vdz7xuqhel</a></p>&mdash; Rob Austin BTCC (@RobertoAustini) <a href="https://twitter.com/RobertoAustini/statuses/428858915225620480">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>So freaking annoyed with those girls that expects all guys to dress up like Austin Butler and those guys in tumblr, like cut the crap pls</p>&mdash; (@palemisfit) <a href="https://twitter.com/palemisfit/statuses/428753584813907968">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Winter storm slams south, strands travelers in Austin. <a href="http://t.co/VLuE3r2BR3">http://t.co/VLuE3r2BR3</a></p>&mdash; KXAN News (@KXAN_News) <a href="https://twitter.com/KXAN_News/statuses/428750595520880640">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Need Lodging in Austin During SXSW Interactive? Yes, You Still Have Options! via <a href="http://t.co/77C7Ii8eVk">http://t.co/77C7Ii8eVk</a> via <a href="https://twitter.com/sxsw">@sxsw</a> <a href="https://twitter.com/search?q=%23HomeAway&amp;src=hash">#HomeAway</a></p>&mdash; Sylvia G. Arteaga (@sylfox07) <a href="https://twitter.com/sylfox07/statuses/428723194896203776">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Austin&#39;s not done with winter! More arctic air arrives Tue and hangs around thru Fri. Sleet or snow may be possibe on Wed or Thu. <a href="https://twitter.com/search?q=%23atxwx&amp;src=hash">#atxwx</a></p>&mdash; Mark Murray (@MarkM_KVUE) <a href="https://twitter.com/MarkM_KVUE/statuses/428736092854956032">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Countdown: 2 days until <a href="https://twitter.com/DarksideUSA">@DarksideUSA</a> hits the stage @ <a href="https://twitter.com/search?q=%23emosaustin&amp;src=hash">#emosaustin</a>! Definitely one of our biggest buzz bands! Tix here <a href="http://t.co/2rxbymnHNK">http://t.co/2rxbymnHNK</a></p>&mdash; Emo&#39;s (@emosaustin) <a href="https://twitter.com/emosaustin/statuses/428694351989202944">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>&quot;Selena has some new music coming out. She showed me some of it and it&#39;s incredible&quot; - Austin Mahone</p>&mdash; Team Mahone (@mahomie_team) <a href="https://twitter.com/mahomie_team/statuses/428667898970660864">January 29, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Austin craft breweries, brewpubs benefit from statewide momentum <a href="http://t.co/wTvBWEOgDE">http://t.co/wTvBWEOgDE</a> via <a href="https://twitter.com/ShareThis">@sharethis</a></p>&mdash; The ABGB (@theabgb) <a href="https://twitter.com/theabgb/statuses/428591306412027904">January 29, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Become a Mahomie Street Team Member for Austin Mahone! Click here to sign up <a href="http://t.co/nKLuRqHFPG">http://t.co/nKLuRqHFPG</a></p>&mdash; Sara Mahone (@Sara_saruxa) <a href="https://twitter.com/Sara_saruxa/statuses/428573418103922688">January 29, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>If you haven&#39;t been to the THE BRITNEY SPEARS SING-ALONG DANCE PARTY, Friday is your chance to make dreams come true. <a href="http://t.co/C1fW4MqKtS">http://t.co/C1fW4MqKtS</a></p>&mdash; Alamo Austin (@drafthouse) <a href="https://twitter.com/drafthouse/statuses/428560803835682816">January 29, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Hey Austin TX fans! We&#39;re coming next weekend. Get your tickets to see us live here: <a href="http://t.co/cyVStTwxpj">http://t.co/cyVStTwxpj</a></p>&mdash; Joe Gatto (@Joe_Gatto) <a href="https://twitter.com/Joe_Gatto/statuses/428558054498398209">January 29, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Austin Mahone <a href="https://twitter.com/AustinMahone">@AustinMahone</a> Doesn&#39;t Want To Release Album Until He Collaborates With Drake <a href="http://t.co/XiGOnFAllZ">http://t.co/XiGOnFAllZ</a></p>&mdash; Disney Dreaming (@Disney_Dreaming) <a href="https://twitter.com/Disney_Dreaming/statuses/428551051046711297">January 29, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p><a href="https://twitter.com/search?q=%23austin&amp;src=hash">#austin</a>: Girlfriend going to spain to study abroad for a month whats a good gift to give her before she leaves? <a href="http://t.co/JFintvInHr">http://t.co/JFintvInHr</a></p>&mdash; Austinstudent dotcom (@austinstudent) <a href="https://twitter.com/austinstudent/statuses/428976331293216768">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>The ladies taking <a href="https://twitter.com/search?q=%23Austin&amp;src=hash">#Austin</a>&#39;s music scene by storm: <a href="https://twitter.com/danafalconberry">@danafalconberry</a> <a href="https://twitter.com/EmilyWolfeMusic">@EmilyWolfeMusic</a> <a href="https://twitter.com/jessswilliamson">@jessswilliamson</a>. <a href="http://t.co/ySqrW3tH8y">http://t.co/ySqrW3tH8y</a> <a href="https://twitter.com/CultureMapATX">@CultureMapATX</a></p>&mdash; ACL Festival (@aclfestival) <a href="https://twitter.com/aclfestival/statuses/428921981149265920">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Have you checked out <a href="https://twitter.com/search?q=%23Austin&amp;src=hash">#Austin</a> pop-up dinner experience <a href="https://twitter.com/DinnerLab">@dinnerlab</a> yet? <a href="http://t.co/3ygp78704N">http://t.co/3ygp78704N</a> via <a href="https://twitter.com/citygrammag">@citygrammag</a></p>&mdash; Lauren Modery (@Hipstercrite) <a href="https://twitter.com/Hipstercrite/statuses/428935330004086784">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Marley occupying seat 10D(og) on my <a href="https://twitter.com/Delta">@Delta</a> flight this morning from <a href="https://twitter.com/search?q=%23Austin&amp;src=hash">#Austin</a> to <a href="https://twitter.com/Atlanta_Airport">@Atlanta_Airport</a>! <a href="http://t.co/VRA1ICW5QB">pic.twitter.com/VRA1ICW5QB</a></p>&mdash; Ryan Cooney (@Ryan_Cooney) <a href="https://twitter.com/Ryan_Cooney/statuses/428893614446362624">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>According to <a href="https://twitter.com/walkscore">@walkscore</a>, <a href="https://twitter.com/search?q=%23Austin&amp;src=hash">#Austin</a> is a Car-Dependent City, meaning most errands require a car. Exceptions are in green <a href="http://t.co/rveaG8FAir">pic.twitter.com/rveaG8FAir</a></p>&mdash; Jace Deloney (@JaceDeloney) <a href="https://twitter.com/JaceDeloney/statuses/428249017286283264">January 28, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>That&#39;s not ice -- you just sneezed :) RT <a href="https://twitter.com/AdamBennettTV">@AdamBennettTV</a>: Ice on my car door handle in NW <a href="https://twitter.com/search?q=%23Austin&amp;src=hash">#Austin</a> <a href="https://twitter.com/search?q=%23keyewx&amp;src=hash">#keyewx</a> <a href="http://t.co/fpeKLbbYCR">pic.twitter.com/fpeKLbbYCR</a></p>&mdash; Jordan Steele (@TVsJordanSteele) <a href="https://twitter.com/TVsJordanSteele/statuses/428052008873263104">January 28, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Met with IBM Austin&#39;s Manoj Saxena, proposed <a href="https://twitter.com/UTAustin">@UTAustin</a> conferences for developers &amp; startups on <a href="https://twitter.com/search?q=%23IBMWatson&amp;src=hash">#IBMWatson</a> cognitive computing ecosystem.</p>&mdash; Bob Metcalfe (@BobMetcalfe) <a href="https://twitter.com/BobMetcalfe/statuses/428988209846947840">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Who is <a href="https://twitter.com/AustinMahone">@austinmahone</a> REALLY dating, <a href="https://twitter.com/search?q=%23Mahomies&amp;src=hash">#Mahomies</a>? Find out HERE: <a href="http://t.co/jYjJQNETUe">http://t.co/jYjJQNETUe</a></p>&mdash; J-14 Magazine (@J14Magazine) <a href="https://twitter.com/J14Magazine/statuses/428988076531019776">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>The ladies taking <a href="https://twitter.com/search?q=%23Austin&amp;src=hash">#Austin</a>&#39;s music scene by storm: <a href="https://twitter.com/danafalconberry">@danafalconberry</a> <a href="https://twitter.com/EmilyWolfeMusic">@EmilyWolfeMusic</a> <a href="https://twitter.com/jessswilliamson">@jessswilliamson</a>. <a href="http://t.co/ySqrW3tH8y">http://t.co/ySqrW3tH8y</a> <a href="https://twitter.com/CultureMapATX">@CultureMapATX</a></p>&mdash; ACL Festival (@aclfestival) <a href="https://twitter.com/aclfestival/statuses/428921981149265920">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Wendy Davis’ Campaign Just Started a War with the Austin Political Press Corps <a href="http://t.co/lhhbnG1zrj">http://t.co/lhhbnG1zrj</a> <a href="https://twitter.com/search?q=%23tcot&amp;src=hash">#tcot</a></p>&mdash; PJ Media (@PJMedia_com) <a href="https://twitter.com/PJMedia_com/statuses/428974501762961408">January 30, 2014</a></blockquote>',
+    '<blockquote class="twitter-tweet" data-cards="hidden" lang="en"><p>Enter now for the chance to win a limited-edition X Games Austin skate deck and two tickets! <a href="http://t.co/C4S8U4bQWD">http://t.co/C4S8U4bQWD</a></p>&mdash; Austin TX Followers (@ATXFollowers) <a href="https://twitter.com/ATXFollowers/statuses/428948096995717121">January 30, 2014</a></blockquote>'
+    ]
+
+function getRandomInt(lower, upper){
+  return Math.floor(lower + (Math.random() * (upper - lower + 1)));
+} 
+
+
+function iplop2(){
+  if($("#id_1").length == 0){
+    for(i=0; i<quotez.length; ++i){
+      var id = 'id_' + i
+      var app = '<div id="' + id+ '" class="blip1">' + quotez[i] + '</div>'
+      $(".outer").append( app );
+      $("#" + id).css({
+         "right":"-300px",
+         "top": getRandomInt(1,400)
+      })
+    }
+    window.twttr.widgets.load();
+  }
+  var randId = 'id_' + getRandomInt(0,quotez.length-1)
+  var amt = $(window).width() + $("#" + randId).outerWidth() + 100
+  $("#" + randId).animate({right: "+=" + amt + ""}, getRandomInt(5,10) * 1700, "linear", function(){
+    this.css({
+         "right":"-300px",
+         "top": getRandomInt(1,400)
+    })
+  })
+
+}
+
+function plop(){
+    iplop2()
+    return
+    var id = 'id_' + getRandomInt(1,303030);
+    
+    // ajax call to some local aggregator in lieu of hardcoded poop..
+    var app = '<div id="' + id+ '" class="blip1">' + quotez[getRandomInt(0,quotez.length -1)] + '</div>';
+    $(".outer").append( app );
+    window.twttr.widgets.load();
+    $("#" + id).css({
+        "right":"-300px",
+        "top": getRandomInt(1,400)
+    })
+    var amt = $(window).width() + $("#" + id).outerWidth()
+    $("#" + id).animate({right: "+=" + amt + ""}, getRandomInt(5,10) * 1700, "linear", function(){this.remove()})
+    
+}
+
+function doThis(){
+    setTimeout(function(){plop(); doThis()} ,2000) 
+}
+
+$(document).ready(function(){
+    doThis()
+})
+</script>
+</body>
+</html>
